@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/pinamax/api/issues"
   },
-  "homepage": "https://github.com/pinamax/api#readme"
+  "homepage": "https://github.com/pinamax/api#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^13.1.6",
+    "@types/dotenv": "^8.2.0"
+  }
 }
