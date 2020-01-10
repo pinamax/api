@@ -9,7 +9,7 @@ import ServiceContainer from './service-container';
  */
 export default abstract class Service {
 
-    protected container: ServiceContainer;
+    protected readonly container: ServiceContainer;
 
     /**
      * Creates a new service.
