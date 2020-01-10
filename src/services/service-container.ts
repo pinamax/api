@@ -1,4 +1,8 @@
 import EnvironmentService from './environment-service';
+import ExpressService from './express-service';
+import ControllerService from './controller-service';
+import DatabaseService from './database-service';
+import ServerService from './server-service';
 
 /**
  * Services container class.
@@ -25,6 +29,10 @@ export default class ServiceContainer {
     }
 
     private _env: EnvironmentService;
+    private _express: ExpressService;
+    private _controllers: ControllerService;
+    private _db: DatabaseService;
+    private _srv: ServerService;
 
     /**
      * Creates a new services container.
@@ -39,5 +47,37 @@ export default class ServiceContainer {
             console.log('Loaded environment service');
         }
         return this._env;
+    }
+
+    public get express(): ExpressService {
+        if (!this._express) {
+            this._express = new ExpressService(this);
+            console.log('Loaded Express service');
+        }
+        return this._express;
+    }
+
+    public get controllers(): ControllerService {
+        if (!this._controllers) {
+            this._controllers = new ControllerService(this);
+            console.log('Loaded controllers service');
+        }
+        return this._controllers;
+    }
+
+    public get db(): DatabaseService {
+        if (!this._db) {
+            this._db = new DatabaseService(this);
+            console.log('Loaded database service');
+        }
+        return this._db;
+    }
+
+    public get srv(): ServerService {
+        if (!this._srv) {
+            this._srv = new ServerService(this);
+            console.log('Loaded server service');
+        }
+        return this._srv;
     }
 }
