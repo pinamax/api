@@ -4,7 +4,7 @@ import ServiceContainer from './service-container';
 
 /**
  * Database service class.
- *
+ * 
  * This service is used to interact with database(s). Models must be registered in this service.
  */
 export default class DatabaseService extends Service {
@@ -13,7 +13,7 @@ export default class DatabaseService extends Service {
 
     /**
      * Creates a new database service.
-     *
+     * 
      * @param container Services container
      */
     public constructor(container: ServiceContainer) {
@@ -23,7 +23,7 @@ export default class DatabaseService extends Service {
 
     /**
      * Connects to a database.
-     *
+     * 
      * @param host Host
      * @param port Port
      * @param dbName Database name
@@ -35,7 +35,7 @@ export default class DatabaseService extends Service {
 
     /**
      * Disconnects from a database.
-     *
+     * 
      * @async
      */
     public async disconnect(): Promise<void> {
@@ -44,7 +44,7 @@ export default class DatabaseService extends Service {
 
     /**
      * Creates Mongoose instance.
-     *
+     * 
      * @returns Mongoose instance
      */
     private createMongoose(): Mongoose {
