@@ -5,5 +5,6 @@ declare namespace NodeJS {
         DB_HOST: string;
         DB_PORT: string;
         DB_NAME: string;
+        REQUEST_SIZE_LIMIT: string;
     }
 }

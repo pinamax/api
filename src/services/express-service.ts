@@ -79,7 +79,7 @@ export default class ExpressService extends Service {
         // Security
         app.use(express.urlencoded({
             extended: true,
-            limit: '50mb'
+            limit: process.env.REQUEST_SIZE_LIMIT
         }));
         app.use(express.json());
         app.use(helmet());
