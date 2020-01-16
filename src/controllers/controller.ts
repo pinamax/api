@@ -1,5 +1,5 @@
+import { NextFunction, Request, RequestHandler, Response, Router } from 'express';
 import ServiceContainer from '../services/service-container';
-import { Router, RequestHandler, NextFunction, Request, Response } from 'express';
 
 /**
  * Base controller class.
@@ -10,10 +10,10 @@ import { Router, RequestHandler, NextFunction, Request, Response } from 'express
  */
 export default abstract class Controller {
 
-    protected readonly container: ServiceContainer;
     public readonly rootUri: string;
     public readonly router: Router;
     public readonly endpoints: Endpoint[];
+    protected readonly container: ServiceContainer;
 
     /**
      * Creates a new controller.
@@ -37,24 +37,24 @@ export default abstract class Controller {
         this.endpoints.push(endpoint);
         switch (endpoint.method) {
             default:
-            case "GET":
+            case 'GET':
                 this.router.get(endpoint.uri, this.triggerEndpointHandler, endpoint.handlers);
                 break;
-            case "POST":
+            case 'POST':
                 this.router.post(endpoint.uri, this.triggerEndpointHandler, endpoint.handlers);
                 break;
-            case "PUT":
+            case 'PUT':
                 this.router.put(endpoint.uri, this.triggerEndpointHandler, endpoint.handlers);
                 break;
-            case "PATCH":
+            case 'PATCH':
                 this.router.patch(endpoint.uri, this.triggerEndpointHandler, endpoint.handlers);
                 break;
-            case "DELETE":
+            case 'DELETE':
                 this.router.delete(endpoint.uri, this.triggerEndpointHandler, endpoint.handlers);
                 break;
         }
     }
-    
+
     /**
      * Logs a message when an endpoint is triggered.
      * 
@@ -78,5 +78,5 @@ export interface Endpoint {
     method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
     uri: string;
     description?: string;
-    handlers: RequestHandler[]
-};
+    handlers: RequestHandler[];
+}

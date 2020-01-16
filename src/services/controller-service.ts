@@ -1,7 +1,7 @@
-import Service from './service';
-import ServiceContainer from './service-container';
 import { Application } from 'express';
 import Controller from '../controllers/controller';
+import Service from './service';
+import ServiceContainer from './service-container';
 
 /**
  * Controllers service class.
@@ -34,7 +34,7 @@ export default class ControllerService extends Service {
             app.use(controller.rootUri, controller.router);
             console.log(`Registered controller ${controller.constructor.name} - "${controller.rootUri}"`);
             controller.endpoints.forEach(endpoint => {
-                const description = (endpoint.description !== undefined) ? ` (${endpoint.description})`: '';
+                const description = (endpoint.description !== undefined) ? ` (${endpoint.description})` : '';
                 console.log(`    - ${endpoint.method} "${controller.rootUri}${endpoint.uri}"${description}`);
             });
         });

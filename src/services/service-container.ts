@@ -1,7 +1,7 @@
-import EnvironmentService from './environment-service';
-import ExpressService from './express-service';
 import ControllerService from './controller-service';
 import DatabaseService from './database-service';
+import EnvironmentService from './environment-service';
+import ExpressService from './express-service';
 import ServerService from './server-service';
 
 /**

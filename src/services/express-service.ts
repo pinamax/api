@@ -1,7 +1,7 @@
-import { Server } from 'http';
+import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
-import cors from 'cors';
+import { Server } from 'http';
 import Service from './service';
 import ServiceContainer from './service-container';
 
@@ -93,7 +93,7 @@ export default class ExpressService extends Service {
         app.all('*', (req: express.Request, res: express.Response) => {
             return res.status(404).json({ error: `Unknown endpoint ${req.method} ${req.originalUrl}` });
         });
-        
+
         return app;
     }
 }
