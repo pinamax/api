@@ -13,7 +13,7 @@ import ServiceContainer from './service-container';
 export default class ExpressService extends Service {
 
     private readonly app: express.Application;
-    private srv: Server;
+    private srv: Server | null;
 
     /**
      * Creates a new Express service.
@@ -23,6 +23,7 @@ export default class ExpressService extends Service {
     public constructor(container: ServiceContainer) {
         super(container);
         this.app = this.createApplication();
+        this.srv = null;
     }
 
     /**

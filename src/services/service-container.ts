@@ -28,16 +28,21 @@ export default class ServiceContainer {
         return ServiceContainer.INSTANCE;
     }
 
-    private _env: EnvironmentService;
-    private _express: ExpressService;
-    private _controllers: ControllerService;
-    private _db: DatabaseService;
-    private _srv: ServerService;
+    private _env: EnvironmentService | null;
+    private _express: ExpressService | null;
+    private _controllers: ControllerService | null;
+    private _db: DatabaseService | null;
+    private _srv: ServerService | null;
 
     /**
      * Creates a new services container.
      */
     private constructor() {
+        this._env = null;
+        this._express = null;
+        this._controllers = null;
+        this._db = null;
+        this._srv = null;
         this.env.load(); // Autoload environment
     }
 

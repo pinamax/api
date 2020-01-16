@@ -35,7 +35,24 @@ export default abstract class Controller {
      */
     protected registerEndpoint(endpoint: Endpoint): void {
         this.endpoints.push(endpoint);
-        this.router[endpoint.method.toLowerCase()](endpoint.uri, this.triggerEndpointHandler, endpoint.handlers);
+        switch (endpoint.method) {
+            default:
+            case "GET":
+                this.router.get(endpoint.uri, this.triggerEndpointHandler, endpoint.handlers);
+                break;
+            case "POST":
+                this.router.post(endpoint.uri, this.triggerEndpointHandler, endpoint.handlers);
+                break;
+            case "PUT":
+                this.router.put(endpoint.uri, this.triggerEndpointHandler, endpoint.handlers);
+                break;
+            case "PATCH":
+                this.router.patch(endpoint.uri, this.triggerEndpointHandler, endpoint.handlers);
+                break;
+            case "DELETE":
+                this.router.delete(endpoint.uri, this.triggerEndpointHandler, endpoint.handlers);
+                break;
+        }
     }
     
     /**
