@@ -6,3 +6,7 @@ build/
 
 # Environment
 .env
+
+# Configuration
+config/*
+!config/*.example.yml
