@@ -1,3 +1,4 @@
+import ConfigurationService from './configuration-service';
 import ControllerService from './controller-service';
 import DatabaseService from './database-service';
 import EnvironmentService from './environment-service';
@@ -33,6 +34,7 @@ export default class ServiceContainer {
     private _controllers: ControllerService | null;
     private _db: DatabaseService | null;
     private _srv: ServerService | null;
+    private _config: ConfigurationService | null;
 
     /**
      * Creates a new services container.
@@ -43,6 +45,7 @@ export default class ServiceContainer {
         this._controllers = null;
         this._db = null;
         this._srv = null;
+        this._config = null;
         this.env.load(); // Autoload environment
     }
 
@@ -84,5 +87,13 @@ export default class ServiceContainer {
             console.log('Loaded server service');
         }
         return this._srv;
+    }
+
+    public get config(): ConfigurationService {
+        if (!this._config) {
+            this._config = new ConfigurationService(this);
+            console.log('Loaded configuration service');
+        }
+        return this._config;
     }
 }
